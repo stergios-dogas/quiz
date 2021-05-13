@@ -1,0 +1,374 @@
+import tkinter
+from tkinter import *
+import random
+
+root = tkinter.Tk()
+root.title("Quiz")
+root.geometry("700x600")
+root.config(background="#ffffff")
+
+class last:
+    def __init__(self , erwtisi, apantisi1 , apantisi2 , apantisi3 , apantisi4 ):
+        self.erwtisi=erwtisi
+        self.apantisi1=apantisi1
+        self.apantisi2=apantisi2
+        self.apantisi3=apantisi3
+        self.apantisi4=apantisi4
+
+EPISTIMIS=[]
+EPISTIMIS.append(last("Ποιος έριξε ένα σφυρί και ένα φτερό στη Σελήνη για να δείξει ότι χωρίς αέρα πέφτουν με τον ίδιο ρυθμό;", "a. Ντέιβιντ Ρ. Σκοτ" , "b. Ρίτσαρντ Φίλιπς Φάινμαν" , " c. Βέρνερ Χάιζενμπεργκ" ,"d. Νιλς Μπορ" ))
+EPISTIMIS.append(last("Εάν η Γη είχε γίνει μια μαύρη τρύπα, ποια θα ήταν η διάμετρος του ορίζοντα γεγονότος;", "a. 20mm" , " b. 10mm" , "c. 40mm" ,"d. 80 mm " ))
+EPISTIMIS.append(last("Αν έπεφτε μια τρύπα χωρίς αέρα, χωρίς τριβή, διασχίζοντας τη Γη, πόσο καιρό θα χρειαζόταν να πέσουμε στην άλλη πλευρά; (Στο πλησιέστερο λεπτό.)", "a. 42 λεπτά " , " b. 1 ώρα " , "c. 50 λεπτά " ,"d. 30 λεπτά " ))
+EPISTIMIS.append(last("Πόσες καρδιές έχει ένα χταπόδι;", "a. 3" , " b. 5" , "c. 8" ,"d. 1 " ))
+EPISTIMIS.append(last("Σε ποια χρονιά εφευρέθηκε το προϊόν WD40 από τον χημικό Norm Larsen;", "a. 1953 " , " b. 1970 " , "c. 1820 " ,"d. 1700 " ))
+EPISTIMIS.append(last("Εάν κάνατε ένα βήμα κάθε δευτερόλεπτο σε μπότες επτά πρωταθλημάτων, ποια θα ήταν η ταχύτητά σας σε μίλια ανά ώρα;", "a.75,600 μίλια ανά ώρα" , " b. 10,000 μίλια ανά ώρα " , "c.20,000 μίλια ανά ώρα" ,"d. 150,000 μίλια ανά ώρα " ))
+EPISTIMIS.append(last("Ποιο είναι το πιο μακρινό που μπορείτε να δείτε με γυμνό μάτι;", "a. 2.5 εκατομμύρια έτη φωτός " , " b. 100 έτη φωτός " , "c. 2 χιλιάδες έτη φωτός " ,"d. 1 δικεατομμύριο έτη φωτός " ))
+EPISTIMIS.append(last("Πόσο νερό υπάρχει στη Γη ανά άνθρωπο;", "a. 210,000,000,000 λίτρα νερού ανά άτομο" , " b. 190,000,000 λίτρα νερού ανά άτομο" , "c. 410,000,000,000 λίτρα νερού ανά άτομο" ,"d. 998,000,000 λίτρα νερού ανά άτομο" ))
+EPISTIMIS.append(last("Πόσα γραμμάρια αλατιού (χλωριούχο νάτριο) υπάρχουν σε ένα λίτρο τυπικού θαλασσινού νερού;", "a. Κανένα γραμμάριο " , " b. 24 γραμμάρια " , "c.  7 γραμμάρια " ,"d. 2,17 γραμμάριο " ))
+EPISTIMIS.append(last("Εάν μπορούσατε να επεξεργαστείτε ένα δισεκατομμύριο άτομα ανά δευτερόλεπτο, πόσο καιρό θα χρειαζόταν η τηλεμεταφορά ενός τυπικού ανθρώπου; ", "a. 200 δισεκατομμύρια χρόνια " , " b. 100 εκατομμύρια χρόνια " , "c. 224 δισεκατομμύρια χρόνια " ,"d. 32 εκατομμύρια χρόνια " ))
+EPISTIMIS.append(last("Στο πλησιέστερο 1 τοις εκατό, ποιο ποσοστό της μάζας του ηλιακού συστήματος είναι στον Ήλιο;", "a. 99% " , " b. 27% " , "c. 78% " ,"d. 81,6% " ))
+EPISTIMIS.append(last("Ποια είναι η μέση θερμοκρασία επιφάνειας στην Αφροδίτη;", "a. 460 ° C " , " b. 245 ° C" , "c. 178 ° C " ,"d. 33 ° C " ))
+EPISTIMIS.append(last("Πέριπου πόσα λεπτά χρειάζονται για να φτάσει το φως του ηλίου στην γη;", "a. 8 λεπτά " , " b. 32 λεπτά " , "c. 7 λεπτά" ,"d. 12 λεπτά " ))
+EPISTIMIS.append(last("Στις κοντινότερες χιλιάδες, πόσες τριχες υπάρχουν σε ένα τυπικό ανθρώπινο κεφαλι;", "a. 100.000 " , " b. 110.000  " , "c. 10.000 " ,"d. 500.000 " ))
+EPISTIMIS.append(last("Ποιός εφηύρε το γραμμόφωνο;", "a. Εμίλ Μπερνίλερ " , " b. Τσάρλ Κρος " , "c. Τόμας Έντισον " ,"d. Ελντριτζ Τζόνσον  " ))
+EPISTIMIS.append(last("Πόσα χρόνια θα χρειαστεί ένα διαστημικό σκάφος που ξεκίνησε από την γη τα να φτάσει στο πλανήτη Πλούτωνα; ", "a. 9.5 χρόνια " , " b. 20 χρόνια " , "c.70 χρονια " ,"d. 22.5 χρόνια " ))
+EPISTIMIS.append(last("Ποιός ανακάλυψε ανθρωπογενή ανθρακούχα ποτά;", "a. Τζόζεφ Πρίσλεϋ " , " b. Αντουάν Λαβουασώ" , "c. Γουίλιαμ Γκρίνερ " ,"d. Αλεξάντερ Λοντίγκιν " ))
+EPISTIMIS.append(last("Το 1930 ο Άλμπερτ Αϊνστάιν και ένας συνάδελφός του εκδόθηκαν το Αμερικανικό ευρεσιτεχνιας 1781541.Σε τι χρησιμεύει; ", "a. ψυγείο" , " b. φούρνος " , "c. πλυντήριο " ,"d. καταψύκτης " ))
+EPISTIMIS.append(last("Ποιο είναι το μεγαλύτερο μόριο πού αποτελεί μέρος ενός ανθρώπινου σώματος;", "a. χρωμόσωμα 1 " , " b. γλυκόζη " , "c. κυτταρίνη " ,"d.  αμινοξέα " ))
+
+
+GEOGRAFIAS=[]
+GEOGRAFIAS.append(last("Ποιά πόλη παρέχει την τοποθεσία για το φανταστικό Kings Landing;" , "a.Ριέκα" , "b.Ντουμπροβνίκ" , " c.Ζάγκρεμπ " ,"d.Σιμπένικ"))
+GEOGRAFIAS.append(last("Που βρίσκεται η Πυραμίδα της Γκίζας;" , " a.Τουρκία " , " b.Αίγυπτο" , " c.Ισραίλ " ,"d.Συρία"))
+GEOGRAFIAS.append(last("Σε ποιά χώρα βρίσκεται το Κολοσσαίο;" , "a.Ισπανία" , "b.Ιταλία" , " c.Γαλλία " ,"d.Ελβετία "))
+GEOGRAFIAS.append(last("Που βρίσκεται το Άγαλμα της Ελευθερίας;" , "a.Λατινική Αμερική" , "b.Η.Π.Ααναδά" , " c.Kαναδά " ,"d.Αυστραλία"))
+GEOGRAFIAS.append(last("Που βρίσκεται το λιμάνη του Σίδνεϊ;" , "a.Καναδά" , "b.Αυστραλία" , "c.Νεα Ζιλανδία " ,"d.Γαλλία"))
+GEOGRAFIAS.append(last("Που βρίσκεται το κτιριακό συγρότημα Taz Maxal;" , "a.Πακιστάν" , "b.Ινδία" , " c.Ιράν " ,"d.Ιράκ"))
+GEOGRAFIAS.append(last("Που βρίσκεται ο Πύργος Τζούτσε(Juche Tower);" , "a.Γιαπωνία" , "b.Βόρεια Κορέα" , " c.Νότια Κορέα " ,"d.Κίνα"))
+GEOGRAFIAS.append(last("Που βρίσκονται οι Πύργοι Νερού;" , "a.Ομάν" , "b.Κουβείτ" , " c.Λίβανο " ,"d.Κατάρ"))
+GEOGRAFIAS.append(last("Σε ποιά χώρα βρίσκεται το Μνημείο Azadi;" , "a.Ιράκ" , "b.Ιράν" , " c.Αυγανιστάν" ,"d.Λιβυή"))
+GEOGRAFIAS.append(last("Σε ποιά χώρα βρίσκεται το Στόουνχεντζ;" , "a.Γερμανία " , "b.Ηνωμένο Βασίλειο " , " c.Κρωατία " ," d.Γαλλία"))
+GEOGRAFIAS.append(last("Ποιά είναι η πρωτευούσα της Ινδίας;" , "a.Βομβάη " , "b.Nέο Δελχί" , " c.Καλκούτα " ," d.Μπανκαλόρε"))
+GEOGRAFIAS.append(last("Η μεγαλύτερη σε έκταση χώρα του κόσμου είναι;" , "a.ΗΠΑ " , "b.Ρωσία " , " c.Καναδάς " ,"d.Τουρκία"))
+GEOGRAFIAS.append(last("Η μεγαλύτερη σε πληθυσμό χώρα του κόσμου είναι;" , "a.Ινδία" , "b.Κίνα" , " c.ΗΠΑ " ,"d.Ιαπωνία"))
+GEOGRAFIAS.append(last("Που βρίσκεται το Μπουτάν;" , "a.Αφρική" , "b.Ασία" , "c.Ωκεανία " ,"d.Ευρώπη"))
+GEOGRAFIAS.append(last("Ο μεγαλύτερος σε μήκος ποταμός του κόσμου είναι ο;" , "a.Γάγγης" , "b.Νείλος" , " c.Αμαζόνιος " ,"d.Δούβανής"))
+GEOGRAFIAS.append(last("Το Μπακόυ είναι πρωτεύουσα του;" , "a.Τουρκμενιστάν" , "b.Αζερμπαϊτζαν" , " c.Ουζμπεκιστάν " ,"d. Καζακστάν"))
+GEOGRAFIAS.append(last("Ποιά από αυτές τις χωρές της Ευρώπης δεν έχει θάλασσα ;" , "a.Σλοβαινία" , "b.Σλοβακία" , " c.Πολωνία " ,"d.Κροατια"))
+GEOGRAFIAS.append(last("Με ποιά από τις παρακάτω χώρες δεν συνορεύει η Ουκρανία;" , "a.Ουγγαρία" , "b. Λιθουανία" , " c.Λευκορωσία " ,"d.Ρωσία"))
+GEOGRAFIAS.append(last("Που βρίσκεται η Τασμανία;" , "a.Αφρική" , "b.Αυστραλία" , " c.Ινδονησία " ,"d.Νέα Ζιλανδία "))
+GEOGRAFIAS.append(last("Ναϊρόμπι λέγεται η πρωτεύουσα της;" , "a.Αιθιοπίας" , "b.Κένιας" , " c.Τανζανίας " ,"d.Σομαλία"))
+
+ISTORIAS=[]
+ISTORIAS.append(last("Πότε ιδρύθηκε το πρώτο Πανεπιστήμιο στη Μπολόνια της Ιταλίας;" , "a.1548" , " b.1005 " , " c.1088 " , "d.1200"))
+ISTORIAS.append(last("Ποιά η χρονολογία του τέλους του Πρώτου Παγκοσμίου Πολέμου;" , " a.1821" , " b.1930 " , " c.1918 " , "d.1700"))
+ISTORIAS.append(last("Πότε διατίθεται το πρώτο αντισυλληπτικό χάπι για γυναίκες;" , "a.1860" , " b.1990 " , " c.1960 " , "d.1765"))
+ISTORIAS.append(last("Πότε γεννήθηκε ο William Shakespeare;" , "a.1600" , " b.1420" , " c.1564 " , "d.1300"))
+ISTORIAS.append(last("Πότε έγινε η πρώτη χρήση σύγχρονου χαρτιού;" , "a.120 AD " , " b.205 AD" , " c.105 AD " , "d.180 AD"))
+ISTORIAS.append(last("Πότε ιδρύθηκε η κομμουνιστική Κίνα;" , "a.1959" , " b.1939" , " c.1949 " , "d.1955"))
+ISTORIAS.append(last("Πότε εγκαινιάζει την μεταρρύθμιση ο Martin Luther;" , "a.1577" , " b.1527 " , " c.1517" , "d.1533"))
+ISTORIAS.append(last("Πότε ήρθε το τέλος του Β'παγκοσμίου πολέμου;" , "a.1950" , " b.1947 " , " c.1945" , "d.1943"))
+ISTORIAS.append(last("Πότε ξεκινά την κατάκτησή του στην Ασία ο Tζένγκις Χανς;" , "a.1406" , " b.1276" , " c.1206" , "d.1236"))
+ISTORIAS.append(last("Πότε γεννήθηκε ο Βούδας;" , "a.406 π.Χ" , " b.220 π.Χ " , " c.486 π.Χ " , "d.450 π.Χ"))
+ISTORIAS.append(last("Ο John Kennedy δολοφονήθηκε...;" , "a.1800" , " b.1990 " , " c.1943 " , "d.2005"))
+ISTORIAS.append(last("Ποιος ήταν ο πρώτος δυτικός εξερευνητής που έφτασε στην Κίνα;" , "a.Christopher Columbus" , " b.Ferdinand Magellan " , " c.Marco Polo " , "d.Vasco de Gama"))
+ISTORIAS.append(last("Πότε ανακαλύφθηκε η Αμερική;" , "a.1962" , " b.1592" , " c.1492 " , "d.1792"))
+ISTORIAS.append(last("Ποιος είναι ο τίτλος της αυτογραφία του Χιτλερ;" ,"a.Inkheart" , "b.Meine Biographie" ,"c.Mein Kampf" , "d.Bundestag"))
+ISTORIAS.append(last("H Eva Peron ήταν η πρώτη κυρία...;" , "a.του Περού" , " b.του Μεξικού " , " c.της Αργεντινής " , "d.της Χιλής "))
+ISTORIAS.append(last("Πότε ξεκίνησε ο ελληνικός εμφίλιος πόλεμος;" , "a.1933" , " b.1962 " , " c.1946 " , "d.1952"))
+ISTORIAS.append(last("Η γαλλική επανάσταση έγινε μεταξύ..." , "a.1889-1899" , " b.1689-1699 " , " c.1789-1799 " , "d.1589-12599"))
+ISTORIAS.append(last("Ποιός ήταν ο πρώτος άνθρωπος που έκανε το γύρο του κόσμου;" , "a. De Gama" , " b. Columbus " , " c. Magellan " , "d.Galilei"))
+ISTORIAS.append(last("Πού γεννήθηκε ο Αδόλφο  Χίτλερ ;" , "a.Γερμανία" , " b.Σουηδία " , " c.Αυστρία " , "d.Ολλανδία"))
+ISTORIAS.append(last("Ποιός ανέπτυξε το πρώτο επιτυχημένο εκτυπωτικό μηχάνημα και το έφερε στην Ευρώπη;" , "a.Nikola Tesla" , " b.Johannes Gutenburg " , " c.Galileo Galilei " , "d.Louis Pasteur"))
+
+
+MOUSIKIS=[]
+MOUSIKIS.append(last("Ποια αμερικανική ποπ ομάδα της δεκαετίας του 1960 δημιούργησε τον (ήχο surfin);" , "a.Pop Art" , "b.Beatles" , "c.Ban the Bomb" , " d.Beach Boys "))
+MOUSIKIS.append(last("Ποίο έτος πήγαν οι Beatles στις ΗΠΑ;" , "a.1980" , "b.1958" , "c.1968" , " d.1964"))
+MOUSIKIS.append(last("Ποιός ήταν ο βασικός τραγουδηστης στο ποπ συγκρότημα Slade της δεκαετίας του 1970;" , "a.Bob Dylan " , "b. John  Lennon" , "c.Michael Jakson " , " d.Peter Noone "))
+MOUSIKIS.append(last("Ποιός ήταν ο πρώτος δίσκος της Adele;" , "a.Send my Love " , "b.One and Only" , "c. Water Under the bridge" , " d.Hometown glory "))
+MOUSIKIS.append(last("Ποίο είναι το όνομα της μπάντας με το ακόλουθα μέλη :John  Deacon ,Brian May , Freddie Mercury ,Roger Taylor ;" , "a.Daft Punk" , "b.The Killers" , "c.Duran Duran" , " d.Queen "))
+MOUSIKIS.append(last("Ποιός τραγουδηστης ήταν γνωστός μεταξύ άλλων ως (The king of pop ) και (The Gloved one ) ;" , "a.Pharrell William" , "b.Quincy Jones" , "c.Justin Bieber " , " d.Michael Jackson "))
+MOUSIKIS.append(last("Ποιός αμερικανος ποπ σταρ είχε την επιτυχία το 2015 με τα singles ( Sorry) και ( Love Yourself) ;" , "a.Kendrick Lamar" , "b.Frank Ocean " , "c. Kanye West" , " d.Justin Bieber "))
+MOUSIKIS.append(last("Το (Losing my religion) ήταν ένα χτύπημα για το ποιο εναλλακτικο  Rock Band  to 1991 ;" , "a.Blink -182" , "b.Beck" , "c.Goo goo dolls " , " d.REM "))
+MOUSIKIS.append(last("Ποίο τραγούδι είχε τους ακόλουθους στιχους :(Ξαφνικά δεν είμαι ο μίσος ανθρώπος που ήμουν ./ Υπάρχει μια σκιά που κρέμεται πάνω μου. ) ;" , "a.Αυτά παθαίνεις μάτια μου " , "b.Απόψε θα ήθελα" , "c.Δώσε μου λιγάκι ουρανό " , " d.Εχθές  "))
+MOUSIKIS.append(last("Ποιός καλλιτέχνης διμιουργησε το (Campbell's soup Cans) το 1962 ;" , "a.Elton John " , "b.Stevie Wonder" , "c.Bob Dylan" , " d.Andy Warhol  "))
+MOUSIKIS.append(last("Μπορείτε να ονομάσετε τον γλύπτη που διμιουργησε το (Family Group ) το  1950  την πρώτη μεγάλη επιτροπή του καλλιτέχνη τον Β παγκόσμιο πόλεμο" , "a.Hans Arp" , "b.Michael Parker" , "c.Herbert Bauer" , " d.Henry Moore "))
+MOUSIKIS.append(last("Ποίο έργο του σύγχρονου καλλιτέχνη χρησιμοποιεί το θάνατο ως κεντρικό θέμα που γίνεται διάσημο για μια σειρά έργων τέχνης στο οποίο σώθηκαν νεκρά ζώα ;" , "a.Carel Fabritius" , "b.Albrecht Durer" , "c.Grott Sove" , " d.Damian Horst "))
+MOUSIKIS.append(last("Ποια εθνικότητα ήταν ο γλύπτης Alberto Giacometti ;" , "a.Ιταλός" , "b.Γάλλος" , "c.Ισπανός" , " d.Ελβετός "))
+MOUSIKIS.append(last("Πόσα ηλιοτρόπια υπήρχαν στην τρίτη έκδοση του Van Gogh στον πίνακα " , "a.16" , "b.18 " , "c.9" , " d.12"))
+MOUSIKIS.append(last("Που στον κόσμο εκτίθεται η Μόνα Λίζα του Λεονάρτο ντα Βίντσι ;" , "a.Βρετανικό Μουσείο" , "b.Μουσείο Victoria & Albert" , "c.Μουσείο του Πράδο" , " d.Μουσείο του Λούβρου "))
+MOUSIKIS.append(last("Ποιός καλλιτέχνης ζωγραφίσε  το (The water -Lily Pond )το 1899;" , "a.Pablo Picasso" , "b.Vincent van Gogh" , "c.Salvador Dali" , " d.Claude Monet"))
+MOUSIKIS.append(last("Ποιας  εθνικότητας  ήταν ο καλλιτέχνης Henri Matisse;" , "a.Αγγλική" , "b.Ελβετική " , "c.Ιταλική" , " d.Γαλλική "))
+MOUSIKIS.append(last("Ποιός καλλιτέχνης ζωγραφίσε το (Self portrait with  two Circles )τον  16ο αιώνα ;" , "a.Dirk Jacobs" , "b.Pieter Codde" , "c.Johannes Vermeer" , " d.Rembrandt van Rijn "))
+MOUSIKIS.append(last("Μπορείτε να ονομάσετε το έργο τέχνης που διμιουργησε ο Bridget Rileyτο 1961 -(Shadow Play) , (Cataracts),η (Movement in Squares );" , "a.Κίνηση σε Πολύγωνο " , "b.Κίνηση σε παραλληλόγραμμο " , "c.Κίνηση σε ρόμβους" , " d.Κίνηση σε τετράγωνα"))
+
+ATHLITIKA=[]
+ATHLITIKA.append(last("Σε ποιο άθλημα ξεχώρισε ο Neil Adams;" , " a.taekwondo" , "b.judo" , "c.jiu jitsu" , "d.krav maga"))
+ATHLITIKA.append(last("Ποια ομάδα κέρδισε το αμερικανικό ποδόσφαιρο superbowl το 1993-1994 και 1996;" , " a. Denver Broncos" , "b.Dallas Cowboys" , "c.Minnesota Vikings" , "d.San Francisco 49ers"))
+ATHLITIKA.append(last("Ο Καναδικός Connor McDavid σε ποιο άθλημα είναι ανερχόμενο αστέρι;" , " a.baseball" , "b.ice hockey" , "c.golf" , "d.curling"))
+ATHLITIKA.append(last("Ο Πύρρος Δήμας κατέκτησε συνολικά σε Ολυμπιάδες;" , " a.2 χρυσά, 1 ασημένιο και ένα χάλκινο" , "b.3 χρυσά και ένα χάλκινο" , "c.3 χρυσά, 1 ασημένιο, ένα χάλκινο" , "d. 4 χρυσά και ένα χάλκινο"))
+ATHLITIKA.append(last("Ποιός είναι ο πρώτος σκόερ στην ιστορία του Champion League;" , " a.Ραούλ" , "b.Κριστιάνο Ρονάλντο" , "c.Λιονέλ Μέσι" , "d.Φάνης Γκέκας"))
+ATHLITIKA.append(last("Πόσα χρυσά μετάλλια έχει πάρει σε Ολυμπιακούς Αγώνες ο Μάικλ Φελπς;" , " a.44" , "b.23" , "c.17" , "d.20"))
+ATHLITIKA.append(last("Πόσους παγκόσμιους τίτλους είχε κατακτήσει στην καριέρα του ο αείμνηστος Άιρτον Σένα;" , " a.7" , "b.3" , "c.1" , "d.4"))
+ATHLITIKA.append(last("Πού πραγματοποιήθηκαν οι Αγώνες της Κοινοπολιτείας το 1930;" , " a.Λονδίνο, Αγγλία" , "b.Χάμιλτον, Καναδάς" , "c.Σίδνεϊ,Αυστραλία" , "d.Όκλαντ"))
+ATHLITIKA.append(last("Πόσοι παίκτες υπάρχουν σε μια ομάδα Water Polo;" , " a.9" , "b.7" , "c.6" , "d.10"))
+ATHLITIKA.append(last("Ποια χώρα έχει κυριαρχήσει στους Ολυμπιακούς Θερινούς Αγώνες Συγχρονισμένη Κολύμβηση με πέντε χρυσά μετάλλια από την επαναφορά του στους αγώνες το 2000;" , " a.Ουκρανία" , "b.Ρωσία" , "c.Ιταλία" , "d.Ελλάδα"))
+ATHLITIKA.append(last("Πόσοι παίκτες υπάρχουν σε μια Ολυμπιακή ομάδα curling;" , " a.5" , "b.4" , "c.8" , "d.3"))
+ATHLITIKA.append(last("Ποιος σκόραρε έναν επιπλέον χρόνο πτώσης χρόνου για την Αγγλία για να κερδίσει το Παγκόσμιο Κύπελλο Ράγκμπι 2003 νικώντας την Αυστραλία 20-17;" , " a.Sunia Koto" , "b.Jonny Wilkinson" , "c.Agustin Creevy" , "d.Doug Wooldridge"))
+ATHLITIKA.append(last("Τι αθλητικό παιχνίδι εφευρέθηκε ο James Naismith το 1891;" , " a.χόκεϊ" , "b.μπάσκετ" , "c.πετοσφαίρηση" , "d.μπέιζμπολ"))
+ATHLITIKA.append(last("Πόσες φορές ήταν οι Patriots στο τελικό παιχνίδι του Super Bowl;" , " a.5" , "b.11" , "c.45" , "d.100"))
+ATHLITIKA.append(last("Πόσα Major τουρνουά έχει κατακτήσει στο γκόλφ ο Τάιγκερ Γούντς;" , " a.11" , "b.14" , "c.5" , "d.0"))
+ATHLITIKA.append(last("Ποιος τενίστας κέρδισε το 2012 Ladies Australian Open νικώντας τη Μαρία Σαράποβα 6-3, 6-0;" , " a.Τζέιμς Σκοτ Κόνορς" , "b.Βικτωρία Αζεννέκκα" , "c.Τζον Μάκενρο" , "d.Πιτ Σάμπρας"))
+ATHLITIKA.append(last("Ποιος ήταν το -Sports Personality of the Year- του BBC το 2001;" , " a.jonny wilkinson" , "b.david beckham" , "c.Paula Radcliffe" , "d.kelly holmes"))
+
+def epistimis():
+    hide_frames()
+    for widget in frame.winfo_children():
+        widget.destroy()
+    frame.pack()
+    def swsto():
+        label=Label(frame, text="Σωστή απάντηση.").pack()
+
+    def lathos():
+        label=Label(frame , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+    i=random.randint(0,len(EPISTIMIS)-1)
+    label = Label(frame, text=EPISTIMIS[i].erwtisi).pack()
+    btn = Button(frame, text=EPISTIMIS[i].apantisi1 , width=20,command= swsto  ).pack()
+    btn0 = Button(frame, text=EPISTIMIS[i].apantisi2, width=20,command = lathos).pack()
+    btn1 = Button(frame, text=EPISTIMIS[i].apantisi3 , width=20,command = lathos).pack()
+    btn2 = Button(frame, text=EPISTIMIS[i].apantisi4, width=20,command = lathos).pack()
+    btn3 = Button(frame , text= "Επόμενη Ερώτηση" , width=20,command = epistimis).pack()
+    btn4 = Button(frame , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+def geografias():
+    hide_frames()
+    for widget in frame3.winfo_children():
+        widget.destroy()
+    frame3.pack()
+    def swsto():
+        label=Label(frame3, text="Σωστή απάντηση.").pack()
+
+    def lathos():
+        label=Label(frame3 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+    i=random.randint(0,len(GEOGRAFIAS)-1)
+    label = Label(frame3, text=GEOGRAFIAS[i].erwtisi).pack()
+    btn = Button(frame3, text=GEOGRAFIAS[i].apantisi1 , width=20,command= lathos ).pack()
+    btn0 = Button(frame3, text=GEOGRAFIAS[i].apantisi2, width=20,command = swsto).pack()
+    btn1 = Button(frame3, text=GEOGRAFIAS[i].apantisi3 , width=20,command = lathos).pack()
+    btn2 = Button(frame3, text=GEOGRAFIAS[i].apantisi4, width=20,command = lathos).pack()
+    btn3 = Button(frame3 , text= "Επόμενη Ερώτηση" , width=20,command = geografias).pack()
+    btn4 = Button(frame3 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+
+                     
+
+
+
+def istorias():
+    hide_frames()
+    for widget in frame4.winfo_children():
+        widget.destroy()
+    frame4.pack()
+    def swsto():
+        label=Label(frame4, text="Σωστή απάντηση.").pack()
+    def lathos():
+        label=Label(frame4 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+    i=random.randint(0,len(ISTORIAS)-1)
+    label = Label(frame4, text=ISTORIAS[i].erwtisi).pack()
+    btn = Button(frame4, text=ISTORIAS[i].apantisi1 , width=20,command= lathos).pack()
+    btn0 = Button(frame4, text=ISTORIAS[i].apantisi2, width=20,command = lathos).pack()
+    btn1 = Button(frame4, text=ISTORIAS[i].apantisi3 , width=20,command = swsto).pack()
+    btn2 = Button(frame4, text=ISTORIAS[i].apantisi4, width=20,command = lathos).pack()
+    btn3 = Button(frame4 , text= "Επόμενη Ερώτηση" , width=20,command = istorias).pack()
+    btn4 = Button(frame4 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+def mousikis():
+    hide_frames()
+    for widget in frame5.winfo_children():
+        widget.destroy()
+    frame5.pack()
+    def swsto():
+        label=Label(frame5, text="Σωστή απάντηση.").pack()
+
+    def lathos():
+        label=Label(frame5 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+    i=random.randint(0,len(MOUSIKIS)-1)
+    label = Label(frame5 , text=MOUSIKIS[i].erwtisi).pack()
+    btn = Button(frame5 , text=MOUSIKIS[i].apantisi1 , width=20,command=lathos).pack()
+    btn0 = Button(frame5 , text=MOUSIKIS[i].apantisi2, width=20,command =lathos).pack()
+    btn1 = Button(frame5 , text=MOUSIKIS[i].apantisi3 , width=20,command =lathos).pack()
+    btn2 = Button(frame5 , text=MOUSIKIS[i].apantisi4, width=20,command = swsto).pack()
+    btn3 = Button(frame5 , text= "Επόμενη Ερώτηση" , width=20,command = mousikis).pack()
+    btn4 = Button(frame5 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+    
+
+
+
+
+def athlitika():
+    hide_frames()
+    for widget in frame6.winfo_children():
+        widget.destroy()
+    frame6.pack()
+    def swsto():
+        label=Label(frame6, text="Σωστή απάντηση.").pack()
+
+    def lathos():
+        label=Label(frame6 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+    i=random.randint(0,len(ATHLITIKA)-1)
+    label = Label(frame6, text=ATHLITIKA[i].erwtisi).pack()
+    btn = Button(frame6, text=ATHLITIKA[i].apantisi1 , width=20,command= lathos ).pack()
+    btn0 = Button(frame6, text=ATHLITIKA[i].apantisi2, width=20,command = swsto).pack()
+    btn1 = Button(frame6, text=ATHLITIKA[i].apantisi3 , width=20,command = lathos).pack()
+    btn2 = Button(frame6, text=ATHLITIKA[i].apantisi4, width=20,command = lathos).pack()
+    btn3 = Button(frame6 , text= "Επόμενη Ερώτηση" , width=20,command = athlitika).pack()
+    btn4 = Button(frame6 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+
+
+
+def startquiz():
+    hide_frames()
+    for widget in frame2.winfo_children():
+        widget.destroy()
+    frame2.pack()
+    lblQuestion = Label(
+        frame2,
+        text=" Διάλεξε μία κατηγορία",
+        font=("Consolas", 16),
+        width=500,
+        justify="center",
+        wraplength=400,
+    )
+    lblQuestion.pack()
+
+    radiovar = IntVar()
+    radiovar.set(-1)
+    r1 = Button(
+        frame2,
+        text=" Γεωγραφία ",             
+        font=("Times", 12),
+        width=20,
+        command=geografias
+    )
+    r1.pack()
+    r2 = Button(
+        frame2,
+        text=" Αθλητικά ",
+        font=("Times", 12),
+        width=20,
+        command=athlitika
+    )
+    r2.pack()
+
+    r3 = Button(
+        frame2,
+        text=" Επιστήμη ",
+        font=("Times", 12),
+        width=20,
+        command=epistimis       
+    )
+    r3.pack()
+
+    r4 = Button(
+        frame2,
+        text=" Ιστορία ",
+        font=("Times", 12),
+        width=20,
+        command=istorias
+    )
+    r4.pack()
+
+    r5 = Button(
+        frame2,
+        text=" Μουσική - Τέχνη ",
+        font=("Times", 12),
+        width=20,
+        command=mousikis
+    )
+    r5.pack()
+
+
+def startIspressed():
+    labelimage.destroy()
+    labeltext.destroy()
+    lblInstruction.destroy()
+    btnStart.destroy()
+    startquiz()
+
+
+
+img1 = PhotoImage(file="earth.png")
+labelimage = Label(
+    root,
+    image=img1,
+    background="#ffffff",
+)
+labelimage.pack(pady=(70, 0))
+
+labeltext = Label(
+    root,
+    text="Quiz",
+    font=("Comic sans MS", 24, "bold"),
+    background="#ffffff",
+)
+
+
+
+
+
+
+
+labeltext.pack(pady=(0, 50))
+img2 = PhotoImage(file="start.png")
+
+
+btnStart = Button(
+    root,
+    image=img2,
+    relief=FLAT,
+    #border=0,
+    command=startIspressed,
+)
+
+btnStart.pack()
+
+lblInstruction = Label(
+    root,
+    text="Όταν είσαι έτοιμος πάτα το 'START'",
+    background="#ffffff",
+    font=("Consolas", 14),
+    justify="center",
+)
+
+frame = Frame(root, width=700, height=600)
+
+frame2=Frame(root,width=700,height=600)
+
+frame3 = Frame(root, width=700, height=600)
+
+frame4=Frame(root,width=700,height=600)
+             
+frame5 = Frame(root, width=700, height=600)  
+
+frame6= Frame(root, width=700 , height=600)
+
+def hide_frames():
+    for widget in frame.winfo_children():                                                                                                                                                                    
+        widget.destroy
+    for widget in frame2.winfo_children():
+        widget.destroy
+    for widget in frame3.winfo_children():
+        widget.destroy
+    for widget in frame4.winfo_children():
+        widget.destroy
+    for widget in frame5.winfo_children():
+        widget.destroy
+    for widget in frame6.winfo_children():
+        widget.destroy
+    frame.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame5.pack_forget()
+    frame6.pack_forget()
+    
+lblInstruction.pack()
+root.mainloop()
