@@ -7,6 +7,12 @@ root.title("Quiz")
 root.geometry("700x600")
 root.config(background="#ffffff")
 
+global score
+score = 0
+
+scoreLabel = Label(root , text = " ΣΚΟΡ: " +str(score) , bg = "white")
+scoreLabel.pack()
+    
 class last:
     def __init__(self , erwtisi, apantisi1 , apantisi2 , apantisi3 , apantisi4 ):
         self.erwtisi=erwtisi
@@ -127,11 +133,33 @@ def epistimis():
     for widget in frame.winfo_children():
         widget.destroy()
     frame.pack()
-    def swsto():
-        label=Label(frame, text="Σωστή απάντηση.").pack()
+    
 
+    def swsto():
+        global score
+        label=Label(frame9, text="Σωστή απάντηση.").pack()
+        hide_frames()
+        score += 10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
+        
     def lathos():
-        label=Label(frame , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+        global score
+        label=Label(frame9 , text = "Λάθος απάντηση.").pack()
+        hide_frames()
+        score -=10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
+
+    
+    for widget in frame9.winfo_children():
+        widget.destroy()
+    
+
     i=random.randint(0,len(EPISTIMIS)-1)
     label = Label(frame, text=EPISTIMIS[i].erwtisi).pack()
     btn = Button(frame, text=EPISTIMIS[i].apantisi1 , width=20,command= swsto  ).pack()
@@ -140,16 +168,39 @@ def epistimis():
     btn2 = Button(frame, text=EPISTIMIS[i].apantisi4, width=20,command = lathos).pack()
     btn3 = Button(frame , text= "Επόμενη Ερώτηση" , width=20,command = epistimis).pack()
     btn4 = Button(frame , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+
+    label = Label(frame9, text="epomeni.erwtisi")
+    btn3 = Button(frame9 , text= "Επόμενη Ερώτηση" , width=20,command = epistimis).pack()
+    btn4 = Button(frame9 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+
 def geografias():
     hide_frames()
     for widget in frame3.winfo_children():
         widget.destroy()
     frame3.pack()
     def swsto():
-        label=Label(frame3, text="Σωστή απάντηση.").pack()
+        global score
+        label=Label(frame9, text="Σωστή απάντηση.").pack()
+        hide_frames()
+        score += 10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
 
     def lathos():
-        label=Label(frame3 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+        global score
+        label=Label(frame9 , text = "Λάθος απάντηση.").pack()
+        hide_frames()
+        score -=10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
+
+    for widget in frame9.winfo_children():
+        widget.destroy()
+    
     i=random.randint(0,len(GEOGRAFIAS)-1)
     label = Label(frame3, text=GEOGRAFIAS[i].erwtisi).pack()
     btn = Button(frame3, text=GEOGRAFIAS[i].apantisi1 , width=20,command= lathos ).pack()
@@ -160,7 +211,9 @@ def geografias():
     btn4 = Button(frame3 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
 
                      
-
+    label = Label(frame9, text="epomeni.erwtisi")
+    btn3 = Button(frame9 , text= "Επόμενη Ερώτηση" , width=20,command = geografias).pack()
+    btn4 = Button(frame9 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
 
 
 def istorias():
@@ -169,9 +222,28 @@ def istorias():
         widget.destroy()
     frame4.pack()
     def swsto():
-        label=Label(frame4, text="Σωστή απάντηση.").pack()
+        global score
+        label=Label(frame9, text="Σωστή απάντηση.").pack()
+        hide_frames()
+        score += 10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
     def lathos():
-        label=Label(frame4 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+        global score
+        label=Label(frame9 , text = "Λάθος απάντηση.").pack()
+        hide_frames()
+        score -=10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
+    for widget in frame9.winfo_children():
+        widget.destroy()
+
+
+
     i=random.randint(0,len(ISTORIAS)-1)
     label = Label(frame4, text=ISTORIAS[i].erwtisi).pack()
     btn = Button(frame4, text=ISTORIAS[i].apantisi1 , width=20,command= lathos).pack()
@@ -180,16 +252,41 @@ def istorias():
     btn2 = Button(frame4, text=ISTORIAS[i].apantisi4, width=20,command = lathos).pack()
     btn3 = Button(frame4 , text= "Επόμενη Ερώτηση" , width=20,command = istorias).pack()
     btn4 = Button(frame4 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+
+    label = Label(frame9, text="epomeni.erwtisi")
+    btn3 = Button(frame9 , text= "Επόμενη Ερώτηση" , width=20,command = istorias).pack()
+    btn4 = Button(frame9 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
+
+
 def mousikis():
     hide_frames()
     for widget in frame5.winfo_children():
         widget.destroy()
     frame5.pack()
     def swsto():
-        label=Label(frame5, text="Σωστή απάντηση.").pack()
+        global score
+        label=Label(frame9, text="Σωστή απάντηση.").pack()
+        hide_frames()
+        score += 10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
 
     def lathos():
-        label=Label(frame5 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+        global score
+        label=Label(frame9 , text = "Λάθος απάντηση.").pack()
+        hide_frames()
+        score -=10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
+
+    for widget in frame9.winfo_children():
+        widget.destroy()
+
+    
     i=random.randint(0,len(MOUSIKIS)-1)
     label = Label(frame5 , text=MOUSIKIS[i].erwtisi).pack()
     btn = Button(frame5 , text=MOUSIKIS[i].apantisi1 , width=20,command=lathos).pack()
@@ -201,7 +298,9 @@ def mousikis():
     
 
 
-
+    label = Label(frame9, text="epomeni.erwtisi")
+    btn3 = Button(frame9 , text= "Επόμενη Ερώτηση" , width=20,command = mousikis).pack()
+    btn4 = Button(frame9 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
 
 def athlitika():
     hide_frames()
@@ -209,10 +308,30 @@ def athlitika():
         widget.destroy()
     frame6.pack()
     def swsto():
-        label=Label(frame6, text="Σωστή απάντηση.").pack()
+        global score
+        label=Label(frame9, text="Σωστή απάντηση.").pack()
+        hide_frames()
+        score += 10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
 
     def lathos():
-        label=Label(frame6 , text = "Λάθος απάντηση.Προσπάθησε ξανά.").pack()
+        global score
+        label=Label(frame9 , text = "Λάθος απάντηση.").pack()
+        hide_frames()
+        score -=10
+        scoreLabel.config(text = " ΣΚΟΡ : " +str(score))
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame9.pack()
+
+
+    for widget in frame9.winfo_children():
+        widget.destroy()
+
+
     i=random.randint(0,len(ATHLITIKA)-1)
     label = Label(frame6, text=ATHLITIKA[i].erwtisi).pack()
     btn = Button(frame6, text=ATHLITIKA[i].apantisi1 , width=20,command= lathos ).pack()
@@ -222,7 +341,9 @@ def athlitika():
     btn3 = Button(frame6 , text= "Επόμενη Ερώτηση" , width=20,command = athlitika).pack()
     btn4 = Button(frame6 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
 
-
+    label = Label(frame9, text="epomeni.erwtisi")
+    btn3 = Button(frame9 , text= "Επόμενη Ερώτηση" , width=20,command = athlitika).pack()
+    btn4 = Button(frame9 , text= "Άλλαξε κατηγορία" , width=20,command = startquiz).pack()
 
 def startquiz():
     hide_frames()
@@ -239,8 +360,6 @@ def startquiz():
     )
     lblQuestion.pack()
 
-    radiovar = IntVar()
-    radiovar.set(-1)
     r1 = Button(
         frame2,
         text=" Γεωγραφία ",             
@@ -350,6 +469,8 @@ frame5 = Frame(root, width=700, height=600)
 
 frame6= Frame(root, width=700 , height=600)
 
+frame9= Frame(root, width=700 , height=600)
+
 def hide_frames():
     for widget in frame.winfo_children():                                                                                                                                                                    
         widget.destroy
@@ -363,12 +484,14 @@ def hide_frames():
         widget.destroy
     for widget in frame6.winfo_children():
         widget.destroy
+    for widget in frame9.winfo_children():
+        widget.destroy    
     frame.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
     frame5.pack_forget()
     frame6.pack_forget()
-    
+    frame9.pack_forget()
 lblInstruction.pack()
 root.mainloop()
